@@ -264,8 +264,15 @@ Process_printTime( RichString * str, unsigned long t ) {
 static inline void
 Process_writeCommand( Process * this, int attr, int baseattr,
                       RichString * str ) {
+  char *cmdstring = this->comm;
+  if (this->pl->displayBaseName) {
+     for (char *cp = this->comm; *cp; cp++) {
+       if (*cp == ' ') break;
+       if (*cp == '/') cmdstring = cp+1;
+     }
+  }
   int start = str->len;
-  RichString_append( str, attr, this->comm );
+  RichString_append( str, attr, cmdstring );
   if ( this->pl->highlightBaseName ) {
     int finish = str->len - 1;
     int space = RichString_findChar( str, ' ', start );

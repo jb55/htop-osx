@@ -125,6 +125,7 @@ ProcessList_new( UsersTable * usersTable ) {
   this->hideKernelThreads = false;
   this->hideUserlandThreads = false;
   this->treeView = false;
+  this->displayBaseName = false;
   this->highlightBaseName = false;
   this->highlightMegabytes = false;
   this->detailedCPUTime = false;

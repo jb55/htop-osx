@@ -100,6 +100,8 @@ static bool Settings_read(Settings* this, char* fileName) {
          this->pl->hideUserlandThreads = atoi(option[1]);
       } else if (String_eq(option[0], "shadow_other_users")) {
          this->pl->shadowOtherUsers = atoi(option[1]);
+      } else if (String_eq(option[0], "display_base_name")) {
+         this->pl->displayBaseName = atoi(option[1]);
       } else if (String_eq(option[0], "highlight_base_name")) {
          this->pl->highlightBaseName = atoi(option[1]);
       } else if (String_eq(option[0], "highlight_megabytes")) {
@@ -165,6 +167,7 @@ bool Settings_write(Settings* this) {
    fprintf(fd, "hide_kernel_threads=%d\n", (int) this->pl->hideKernelThreads);
    fprintf(fd, "hide_userland_threads=%d\n", (int) this->pl->hideUserlandThreads);
    fprintf(fd, "shadow_other_users=%d\n", (int) this->pl->shadowOtherUsers);
+   fprintf(fd, "display_base_name=%d\n", (int) this->pl->displayBaseName);
    fprintf(fd, "highlight_base_name=%d\n", (int) this->pl->highlightBaseName);
    fprintf(fd, "highlight_megabytes=%d\n", (int) this->pl->highlightMegabytes);
    fprintf(fd, "highlight_threads=%d\n", (int) this->pl->highlightThreads);
